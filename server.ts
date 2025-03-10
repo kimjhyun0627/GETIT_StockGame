@@ -23,12 +23,12 @@ const wss = new WebSocketServer({ server });
 let jsonData = {
     year: 2022,
     companies: [
-        { name: "Company 1", data: [1000, 1100, 1200, 1300] },
-        { name: "Company 2", data: [2000, 2100, 2200, 2300] },
-        { name: "Company 3", data: [3000, 3100, 3200, 3300] },
-        { name: "Company 4", data: [4000, 4100, 4200, 4300] },
-        { name: "Company 5", data: [5000, 5100, 5200, 5300] },
-        { name: "Company 6", data: [6000, 6100, 6200, 6300] },
+        { name: "Company 1", data: [1000, 1100, 1200, 1300, 1400, 1500, 2000] },
+        { name: "Company 2", data: [2000, 2100, 2200, 2300, 2400, 2500, 2000] },
+        { name: "Company 3", data: [3000, 3100, 3200, 3300, 3300, 3400, 2001] },
+        { name: "Company 4", data: [4000, 4100, 4200, 4300, 1500, 1600, 2001] },
+        { name: "Company 5", data: [5000, 5100, 5200, 5300, 5400, 5500, 2002] },
+        { name: "Company 6", data: [6000, 6100, 6200, 6300, 6400, 6500, 2003] },
     ],
 };
 

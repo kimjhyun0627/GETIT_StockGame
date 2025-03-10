@@ -5,11 +5,12 @@ var react_router_dom_1 = require("react-router-dom");
 var react_cookie_1 = require("react-cookie");
 var LoginPage = function () {
     var _a = react_1.useState(""), name = _a[0], setName = _a[1];
-    var _b = react_cookie_1.useCookies(["user"]), cookies = _b[0], setCookie = _b[1];
+    var _b = react_cookie_1.useCookies(["user"]), setCookie = _b[1];
     var navigate = react_router_dom_1.useNavigate();
     var handleLogin = function () {
-        // 이름을 쿠키에 저장
-        setCookie("user", name, { path: "/" });
+        var expires = new Date();
+        expires.setTime(expires.getTime() + 5 * 60 * 60 * 1000); // 5시간 후 만료
+        setCookie("user", name, { path: "/", expires: expires }); // 쿠키에 사용자 이름 저장
         // 쿠키에 정보가 저장되면 리렌더링 후 적절한 페이지로 이동
         if (name === "ggetitofficial") {
             navigate("/commander");

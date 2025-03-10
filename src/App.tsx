@@ -6,7 +6,7 @@ import CommanderPage from "./component/CommanderPage";
 import LoginPage from "./component/LoginPage";
 
 const App: React.FC = () => {
-  const [cookies, setCookie] = useCookies(["user"]);
+  const [cookies] = useCookies(["user"]);
   const [user, setUser] = useState<string | null>(null);
 
   // 쿠키에 사용자 정보가 있으면 해당 정보를 가져온다
@@ -32,7 +32,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/user" element={user !== "ggetitofficial" ? <UserPage /> : <Navigate to="/commander" />} />
+        <Route path="/user" element={user !== "ggetitofficial" ? <UserPage name={user} /> : <Navigate to="/commander" />} />
         <Route path="/commander" element={user === "ggetitofficial" ? <CommanderPage /> : <Navigate to="/user" />} />
         <Route path="*" element={<Navigate to={user !== "ggetitofficial" ? "/user" : "/commander"} />} />
       </Routes>
