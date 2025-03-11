@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import exp from "constants";
 
 const LoginPage: React.FC = () => {
     const [name, setName] = useState<string>("");
