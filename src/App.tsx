@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Navigate, Routes } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import UserPage from "./component/UserPage";
-import CommanderPage from "./component/CommanderPage";
-import LoginPage from "./component/LoginPage";
+import UserPage from "./user/pages/UserPage";
+import CommanderPage from "./commander/pages/CommanderPage";
+import LoginPage from "./global/pages/LoginPage";
 
 const App: React.FC = () => {
   const [cookies] = useCookies(["user"]);
