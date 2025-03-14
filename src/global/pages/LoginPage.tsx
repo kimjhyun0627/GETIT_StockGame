@@ -1,37 +1,52 @@
-import React, { useState } from "react";
+// LoginPage.tsx
+
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
+import GoogleLoginButton from "../components/GoogleLogin"
+import useUserInfo from "../../store/states/userInfo";
 
-const LoginPage: React.FC = () => {
-    const [name, setName] = useState<string>("");
-    const [, setCookie] = useCookies(["user"]);
+
+const LoginPage = () => {
     const navigate = useNavigate();
+    const { username, email } = useUserInfo();
+    const setUserInfo = useUserInfo(state => state.updateUserInfo)
+    const [userCookie, setUserCookie] = useCookies(["userinfo"]);
 
-    const handleLogin = () => {
-        const expires = new Date();
-        expires.setTime(expires.getTime() + 5 * 60 * 60 * 1000); // 5시간 후 만료
-        setCookie("user", name, { path: "/", expires: expires }); // 쿠키에 사용자 이름 저장
+    useEffect(() => {
+        const user = userCookie.userinfo;
 
-        // 쿠키에 정보가 저장되면 리렌더링 후 적절한 페이지로 이동
-        if (name === "ggetitofficial") {
-            navigate("/commander");
-        } else {
-            navigate("/user");
+        if (!user) {
+            console.log("no usercookie");
+            const expires = new Date();
+            expires.setTime(expires.getTime() + 5 * 60 * 1000);
+            setUserCookie("userinfo",
+                JSON.stringify({
+                    username: "",
+                    email: "",
+                }),
+                { path: "/", expires: expires });
+
+            setUserInfo("", "");
         }
-    };
+        else {
+            if (user.email === "getit0official@gmail.com") {
+                navigate('/commander');
+            }
+            else if (user.email.endsWith("@gmail.com")) {
+                navigate('/user');
+            }
+            else if (user.email.endsWith("@knu.ac.kr")) {
+                navigate('/user');
+            }
+        }
+    }, [navigate, userCookie])
 
     return (
         <div>
-            <h1>로그인</h1>
-            <input
-                type="text"
-                placeholder="사용자 이름을 입력하세요"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-            />
-            <button onClick={handleLogin}>로그인</button>
+            <GoogleLoginButton />
         </div>
-    );
-};
+    )
+}
 
-export default LoginPage;
+export default LoginPage
