@@ -3,7 +3,7 @@
 import DataHandlerPage from "../components/DataHandlerPage"
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom"
-import useUserInfo from "../../store/stores/userInfo";
+import useUserInfo from "../../store/stores/useUserInfo";
 
 const CommanderPage = () => {
 

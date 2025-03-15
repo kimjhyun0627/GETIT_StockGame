@@ -3,14 +3,14 @@
 import { CredentialResponse, GoogleLogin } from "@react-oauth/google";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import useUserInfo from "../../store/stores/userInfo";
+import useUserInfo from "../../store/stores/useUserInfo";
 
 const GoogleLoginButton = () => {
     const navigate = useNavigate();
     const [, setUserCookie] = useCookies(["userinfo"]);
     const setUserInfo = useUserInfo(state => state.updateUserInfo)
 
-    function decodeJwtResponse(token: string) {
+    const decodeJwtResponse = (token: string) => {
         let base64Url = token.split('.')[1];
         let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
         let jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {

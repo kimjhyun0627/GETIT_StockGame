@@ -3,7 +3,7 @@
 import { useNavigate } from "react-router-dom";
 import ChartPage from "../components/ChartPage"
 import StockHandlerPage from "../components/StockHandlerPage"
-import useUserInfo from "../../store/stores/userInfo";
+import useUserInfo from "../../store/stores/useUserInfo";
 import { useEffect } from "react";
 
 const UserPage = () => {

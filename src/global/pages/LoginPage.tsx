@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import GoogleLoginButton from "../components/GoogleLogin"
-import useUserInfo from "../../store/stores/userInfo";
+import useUserInfo from "../../store/stores/useUserInfo";
 
 
 const LoginPage = () => {
