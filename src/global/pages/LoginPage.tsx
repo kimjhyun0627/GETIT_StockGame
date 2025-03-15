@@ -4,12 +4,12 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import GoogleLoginButton from "../components/GoogleLogin"
-import useUserInfo from "../../store/states/userInfo";
+import useUserInfo from "../../store/stores/userInfo";
 
 
 const LoginPage = () => {
     const navigate = useNavigate();
-    const { username, email } = useUserInfo();
+
     const setUserInfo = useUserInfo(state => state.updateUserInfo)
     const [userCookie, setUserCookie] = useCookies(["userinfo"]);
 
@@ -30,6 +30,8 @@ const LoginPage = () => {
             setUserInfo("", "");
         }
         else {
+            setUserInfo(user.username, user.email)
+
             if (user.email === "getit0official@gmail.com") {
                 navigate('/commander');
             }

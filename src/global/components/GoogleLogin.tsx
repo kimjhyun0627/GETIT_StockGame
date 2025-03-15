@@ -3,7 +3,7 @@
 import { CredentialResponse, GoogleLogin } from "@react-oauth/google";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import useUserInfo from "../../store/states/userInfo";
+import useUserInfo from "../../store/stores/userInfo";
 
 const GoogleLoginButton = () => {
     const navigate = useNavigate();
